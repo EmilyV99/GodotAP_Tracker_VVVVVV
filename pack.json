@@ -1,0 +1,943 @@
+{
+	"game": "VVVVVV",
+	"type": "DATA_PACK",
+	"description_bar": "VVVVVV Tracker",
+	"description_ttip": "A tracker for VVVVVV, built for GodotAP clients.",
+	"GUI": {
+		"type": "Margin",
+		"top": 0,
+		"left": 15,
+		"bottom": 15,
+		"right": 15,
+		"color": "default",
+		"draw_filter": "NEAREST",
+		"child": {
+			"type": "Tabs",
+			"tabs": {
+				"Map": {
+					"type": "Row",
+					"children": [
+						{
+							"halign": "EXPAND"
+						},
+						{
+							"type": "LocationMap",
+							"id": "Overworld",
+							"image": "v6_assets/map.png",
+							"some_reachable_color": "gold"
+						},
+						{
+							"type": "Margin",
+							"top": 20,
+							"left": 30,
+							"bottom": 20,
+							"right": 30,
+							"color": "black",
+							"halign": "EXPAND",
+							"valign": "SHRINK_CENTER",
+							"child": {
+								"type": "Column",
+								"children": [
+									{
+										"type": "Label",
+										"text": "Zone Access",
+										"size": 20,
+										"color": "white"
+									},
+									{
+										"type": "Grid",
+										"columns": 2,
+										"halign": "SHRINK_CENTER",
+										"hspacing": 20,
+										"vspacing": 6,
+										"children": [
+											{
+												"type": "Icon",
+												"image": "v6_assets/trinket.png",
+												"width": 64,
+												"height": 64,
+												"tooltip": "Zone 1",
+												"modulate_color": "3101FF",
+												"value": {
+													"val": "ZONE_1_COUNT",
+													"gray_under": "PerZoneTrinkets",
+													"max": "PerZoneTrinkets",
+													"show_max": true
+												}
+											},
+											{
+												"type": "Icon",
+												"image": "v6_assets/trinket.png",
+												"width": 64,
+												"height": 64,
+												"tooltip": "Zone 2",
+												"modulate_color": "EF0117",
+												"value": {
+													"val": "ZONE_2_COUNT",
+													"gray_under": "PerZoneTrinkets",
+													"max": "PerZoneTrinkets",
+													"show_max": true
+												}
+											},
+											{
+												"type": "Icon",
+												"image": "v6_assets/trinket.png",
+												"width": 64,
+												"height": 64,
+												"tooltip": "Zone 3",
+												"modulate_color": "F6FF01",
+												"value": {
+													"val": "ZONE_3_COUNT",
+													"gray_under": "PerZoneTrinkets",
+													"max": "PerZoneTrinkets",
+													"show_max": true
+												}
+											},
+											{
+												"type": "Icon",
+												"image": "v6_assets/trinket.png",
+												"width": 64,
+												"height": 64,
+												"tooltip": "Zone 4",
+												"modulate_color": "01FF31",
+												"value": {
+													"val": "ZONE_4_COUNT",
+													"gray_under": "PerZoneTrinkets",
+													"max": "PerZoneTrinkets",
+													"show_max": true
+												}
+											}
+										]
+									},
+									{
+										"height": 4
+									},
+									{
+										"type": "Icon",
+										"image": "v6_assets/trinket.png",
+										"width": 64,
+										"height": 64,
+										"tooltip": "Extra Trinkets",
+										"modulate_color": "purple",
+										"value": {
+											"val": {
+												"type": "OP",
+												"op": "+",
+												"vals": [
+													{
+														"type": "ITEMCOUNT",
+														"name": "Trinket 13"
+													},
+													{
+														"type": "ITEMCOUNT",
+														"name": "Trinket 14"
+													},
+													{
+														"type": "ITEMCOUNT",
+														"name": "Trinket 15"
+													},
+													{
+														"type": "ITEMCOUNT",
+														"name": "Trinket 16"
+													},
+													{
+														"type": "ITEMCOUNT",
+														"name": "Trinket 17"
+													},
+													{
+														"type": "ITEMCOUNT",
+														"name": "Trinket 18"
+													},
+													{
+														"type": "ITEMCOUNT",
+														"name": "Trinket 19"
+													},
+													{
+														"type": "ITEMCOUNT",
+														"name": "Trinket 20"
+													}
+												]
+											},
+											"gray_under": 0,
+											"max": "TotalExcessTrinkets",
+											"show_max": true
+										}
+									}
+								]
+							}
+						}
+					]
+				},
+				"Locations": {
+					"type": "LocationConsole",
+					"hint_status": false
+				}
+			}
+		}
+	},
+	"statuses": [
+		{
+			"name": "Found",
+			"ttip": "Already found",
+			"color": "green",
+			"map_color": "404040"
+		},
+		{
+			"name": "Unknown",
+			"ttip": "",
+			"color": "white",
+			"map_color": "white"
+		},
+		{
+			"name": "Unreachable",
+			"ttip": "Cannot be accessed",
+			"color": "red",
+			"map_color": "red"
+		},
+		{
+			"name": "Out of Logic",
+			"ttip": "Reachable, but not currently expected of you, and might require glitches/tricks or be exceedingly difficult.",
+			"color": "orange",
+			"map_color": "orange"
+		},
+		{
+			"name": "Reachable",
+			"ttip": "Currently reachable within logic",
+			"color": "plum",
+			"map_color": "green"
+		}
+	],
+	"locations": [
+		{
+			"id": "Clarion Call",
+			"map_spots": [
+				{
+					"id": "Overworld",
+					"x": 170,
+					"y": 104
+				}
+			],
+			"Reachable": "ZONE3"
+		},
+		{
+			"id": "Doing things the hard way",
+			"map_spots": [
+				{
+					"id": "Overworld",
+					"x": 222,
+					"y": 130
+				}
+			],
+			"Reachable": "ZONE3"
+		},
+		{
+			"id": "Edge Games",
+			"map_spots": [
+				{
+					"id": "Overworld",
+					"x": 210,
+					"y": 31
+				}
+			],
+			"Reachable": "ZONE4"
+		},
+		{
+			"id": "It's a Secret to Nobody",
+			"map_spots": [
+				{
+					"id": "Overworld",
+					"x": 174,
+					"y": 40
+				}
+			],
+			"Reachable": true
+		},
+		{
+			"id": "NPC Trinket",
+			"map_spots": [
+				{
+					"id": "Overworld",
+					"x": 30,
+					"y": 95
+				}
+			],
+			"Reachable": {
+				"type": "ANY",
+				"rules": [
+					"ZONE1",
+					"ZONE2",
+					"ZONE3",
+					"ZONE4"
+				]
+			}
+		},
+		{
+			"id": "One Way Room",
+			"map_spots": [
+				{
+					"id": "Overworld",
+					"x": 141,
+					"y": 113
+				}
+			],
+			"Reachable": "ZONE3"
+		},
+		{
+			"id": "Overworld (Left of Ship)",
+			"visname": "Left of Ship",
+			"map_spots": [
+				{
+					"id": "Overworld",
+					"x": 20,
+					"y": 95
+				}
+			],
+			"Reachable": true
+		},
+		{
+			"id": "Overworld (Outside Entanglement Generator)",
+			"visname": "Outside Entanglement Generator",
+			"map_spots": [
+				{
+					"id": "Overworld",
+					"x": 65,
+					"y": 140
+				}
+			],
+			"Reachable": "ZONE1"
+		},
+		{
+			"id": "Overworld (Pipe-shaped Segment)",
+			"visname": "Pipe-shaped Segment",
+			"map_spots": [
+				{
+					"id": "Overworld",
+					"x": 125,
+					"y": 176
+				}
+			],
+			"Reachable": true
+		},
+		{
+			"id": "Overworld (Sad Elephant)",
+			"visname": "Sad Elephant",
+			"map_spots": [
+				{
+					"id": "Overworld",
+					"x": 123,
+					"y": 75
+				}
+			],
+			"Reachable": true
+		},
+		{
+			"id": "Overworld (Square Room)",
+			"visname": "Square Room",
+			"map_spots": [
+				{
+					"id": "Overworld",
+					"x": 42,
+					"y": 22
+				}
+			],
+			"Reachable": true
+		},
+		{
+			"id": "Prize for the Reckless",
+			"map_spots": [
+				{
+					"id": "Overworld",
+					"x": 138,
+					"y": 66
+				}
+			],
+			"Reachable": "ZONE3"
+		},
+		{
+			"id": "Purest Unobtainium",
+			"map_spots": [
+				{
+					"id": "Overworld",
+					"x": 78,
+					"y": 14
+				}
+			],
+			"Reachable": "ZONE1"
+		},
+		{
+			"id": "The Tantalizing Trinket",
+			"map_spots": [
+				{
+					"id": "Overworld",
+					"x": 91,
+					"y": 167
+				}
+			],
+			"Reachable": "ZONE1"
+		},
+		{
+			"id": "The Tower 1",
+			"map_spots": [
+				{
+					"id": "Overworld",
+					"x": 114,
+					"y": 100
+				}
+			],
+			"Reachable": "ZONE2"
+		},
+		{
+			"id": "The Tower 2",
+			"map_spots": [
+				{
+					"id": "Overworld",
+					"x": 114,
+					"y": 157
+				}
+			],
+			"Reachable": "ZONE2"
+		},
+		{
+			"id": "Trench Warfare",
+			"map_spots": [
+				{
+					"id": "Overworld",
+					"x": 162,
+					"y": 59
+				}
+			],
+			"Reachable": true
+		},
+		{
+			"id": "V",
+			"visname": "V (Final Level)",
+			"map_spots": [
+				{
+					"id": "Overworld",
+					"x": 2,
+					"y": 65
+				}
+			],
+			"Reachable": {
+				"type": "ALL",
+				"rules": [
+					"ZONE1",
+					"ZONE2",
+					"ZONE3",
+					"ZONE4"
+				]
+			}
+		},
+		{
+			"id": "You Just Keep Coming Back",
+			"map_spots": [
+				{
+					"id": "Overworld",
+					"x": 186,
+					"y": 116
+				}
+			],
+			"Reachable": "ZONE3"
+		},
+		{
+			"id": "Young Man, It's Worth the Challenge",
+			"map_spots": [
+				{
+					"id": "Overworld",
+					"x": 30,
+					"y": 167
+				}
+			],
+			"Reachable": "ZONE1"
+		}
+	],
+	"named_rules": {
+		"ZONE1": {
+			"type": "VALUE",
+			"left": "DOOR_1_COUNT",
+			"op": ">=",
+			"right": "PerZoneTrinkets"
+		},
+		"ZONE2": {
+			"type": "VALUE",
+			"left": "DOOR_2_COUNT",
+			"op": ">=",
+			"right": "PerZoneTrinkets"
+		},
+		"ZONE3": {
+			"type": "VALUE",
+			"left": "DOOR_3_COUNT",
+			"op": ">=",
+			"right": "PerZoneTrinkets"
+		},
+		"ZONE4": {
+			"type": "VALUE",
+			"left": "DOOR_4_COUNT",
+			"op": ">=",
+			"right": "PerZoneTrinkets"
+		}
+	},
+	"named_values": {
+		"PerZoneTrinkets": {
+			"type": "SLOT_DATA",
+			"keys": [
+				"DoorCost"
+			]
+		},
+		"TotalExcessTrinkets": {
+			"type": "OP",
+			"op": "-",
+			"vals": [
+				20,
+				{
+					"type": "OP",
+					"op": "*",
+					"vals": [
+						4,
+						"PerZoneTrinkets"
+					]
+				}
+			]
+		},
+		
+		"ZONE_1_COUNT": "DOOR_1_COUNT",
+		"ZONE_2_COUNT": "DOOR_2_COUNT",
+		"ZONE_3_COUNT": "DOOR_3_COUNT",
+		"ZONE_4_COUNT": "DOOR_4_COUNT",
+		
+		"DOOR_1_COUNT": "TRINKETS_1",
+		"DOOR_2_COUNT": "TRINKETS_2",
+		"DOOR_3_COUNT": "TRINKETS_3",
+		"DOOR_4_COUNT": "TRINKETS_4",
+		
+		"TRINKETS_1": {
+			"type": "SWITCH",
+			"val": "PerZoneTrinkets",
+			"cases": {
+				"3": {
+					"type": "OP",
+					"op": "+",
+					"vals": [
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 01"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 02"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 03"
+						}
+					]
+				},
+				"2": {
+					"type": "OP",
+					"op": "+",
+					"vals": [
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 01"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 02"
+						}
+					]
+				},
+				"1": {
+					"type": "ITEMCOUNT",
+					"name": "Trinket 01"
+				},
+				"0": 0
+			}
+		},
+		"TRINKETS_2": {
+			"type": "SWITCH",
+			"val": "PerZoneTrinkets",
+			"cases": {
+				"3": {
+					"type": "OP",
+					"op": "+",
+					"vals": [
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 04"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 05"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 06"
+						}
+					]
+				},
+				"2": {
+					"type": "OP",
+					"op": "+",
+					"vals": [
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 03"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 04"
+						}
+					]
+				},
+				"1": {
+					"type": "ITEMCOUNT",
+					"name": "Trinket 02"
+				},
+				"0": 0
+			}
+		},
+		"TRINKETS_3": {
+			"type": "SWITCH",
+			"val": "PerZoneTrinkets",
+			"cases": {
+				"3": {
+					"type": "OP",
+					"op": "+",
+					"vals": [
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 07"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 08"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 09"
+						}
+					]
+				},
+				"2": {
+					"type": "OP",
+					"op": "+",
+					"vals": [
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 05"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 06"
+						}
+					]
+				},
+				"1": {
+					"type": "ITEMCOUNT",
+					"name": "Trinket 03"
+				},
+				"0": 0
+			}
+		},
+		"TRINKETS_4": {
+			"type": "SWITCH",
+			"val": "PerZoneTrinkets",
+			"cases": {
+				"3": {
+					"type": "OP",
+					"op": "+",
+					"vals": [
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 10"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 11"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 12"
+						}
+					]
+				},
+				"2": {
+					"type": "OP",
+					"op": "+",
+					"vals": [
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 07"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 08"
+						}
+					]
+				},
+				"1": {
+					"type": "ITEMCOUNT",
+					"name": "Trinket 04"
+				},
+				"0": 0
+			}
+		},
+		"EXCESS_TRINKETS":{
+			"type": "SWITCH",
+			"val": "PerZoneTrinkets",
+			"cases": {
+				"3": {
+					"type": "OP",
+					"op": "+",
+					"vals": [
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 13"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 14"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 15"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 16"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 17"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 18"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 19"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 20"
+						}
+					]
+				},
+				"2": {
+					"type": "OP",
+					"op": "+",
+					"vals": [
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 09"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 10"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 11"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 12"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 13"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 14"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 15"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 16"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 17"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 18"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 19"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 20"
+						}
+					]
+				},
+				"1": {
+					"type": "OP",
+					"op": "+",
+					"vals": [
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 05"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 06"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 07"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 08"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 09"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 10"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 11"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 12"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 13"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 14"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 15"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 16"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 17"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 18"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 19"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 20"
+						}
+					]
+				},
+				"0": {
+					"type": "OP",
+					"op": "+",
+					"vals": [
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 01"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 02"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 03"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 04"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 05"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 06"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 07"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 08"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 09"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 10"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 11"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 12"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 13"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 14"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 15"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 16"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 17"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 18"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 19"
+						},
+						{
+							"type": "ITEMCOUNT",
+							"name": "Trinket 20"
+						}
+					]
+				}
+			}
+		}
+	},
+	"variables": {
+		
+	}
+}
