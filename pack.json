@@ -118,7 +118,7 @@
 										"width": 64,
 										"height": 64,
 										"tooltip": "Extra Trinkets",
-										"modulate_color": "purple",
+										"modulate_color": "cyan",
 										"value": {
 											"val": {
 												"type": "OP",
@@ -500,15 +500,119 @@
 			]
 		},
 		
-		"ZONE_1_COUNT": "DOOR_1_COUNT",
-		"ZONE_2_COUNT": "DOOR_2_COUNT",
-		"ZONE_3_COUNT": "DOOR_3_COUNT",
-		"ZONE_4_COUNT": "DOOR_4_COUNT",
+		"ZONE_1_COUNT": {
+			"type": "SWITCH",
+			"val": {
+				"type": "VAR",
+				"name": "Zone1Door"
+			},
+			"cases": {
+				"1": "DOOR_1_COUNT",
+				"2": "DOOR_2_COUNT",
+				"3": "DOOR_3_COUNT",
+				"4": "DOOR_4_COUNT",
+			}
+		},
+		"ZONE_2_COUNT": {
+			"type": "SWITCH",
+			"val": {
+				"type": "VAR",
+				"name": "Zone2Door"
+			},
+			"cases": {
+				"1": "DOOR_1_COUNT",
+				"2": "DOOR_2_COUNT",
+				"3": "DOOR_3_COUNT",
+				"4": "DOOR_4_COUNT",
+			}
+		},
+		"ZONE_3_COUNT": {
+			"type": "SWITCH",
+			"val": {
+				"type": "VAR",
+				"name": "Zone3Door"
+			},
+			"cases": {
+				"1": "DOOR_1_COUNT",
+				"2": "DOOR_2_COUNT",
+				"3": "DOOR_3_COUNT",
+				"4": "DOOR_4_COUNT",
+			}
+		},
+		"ZONE_4_COUNT": {
+			"type": "SWITCH",
+			"val": {
+				"type": "VAR",
+				"name": "Zone4Door"
+			},
+			"cases": {
+				"1": "DOOR_1_COUNT",
+				"2": "DOOR_2_COUNT",
+				"3": "DOOR_3_COUNT",
+				"4": "DOOR_4_COUNT",
+			}
+		},
 		
-		"DOOR_1_COUNT": "TRINKETS_1",
-		"DOOR_2_COUNT": "TRINKETS_2",
-		"DOOR_3_COUNT": "TRINKETS_3",
-		"DOOR_4_COUNT": "TRINKETS_4",
+		"DOOR_1_COUNT": {
+			"type": "SWITCH",
+			"val": {
+				"type": "SLOT_DATA",
+				"keys": [
+					"AreaCostRando", "1"
+				]
+			},
+			"cases": {
+				"1": "TRINKETS_1",
+				"2": "TRINKETS_2",
+				"3": "TRINKETS_3",
+				"4": "TRINKETS_4",
+			}
+		},
+		"DOOR_2_COUNT": {
+			"type": "SWITCH",
+			"val": {
+				"type": "SLOT_DATA",
+				"keys": [
+					"AreaCostRando", "2"
+				]
+			},
+			"cases": {
+				"1": "TRINKETS_1",
+				"2": "TRINKETS_2",
+				"3": "TRINKETS_3",
+				"4": "TRINKETS_4",
+			}
+		},
+		"DOOR_3_COUNT": {
+			"type": "SWITCH",
+			"val": {
+				"type": "SLOT_DATA",
+				"keys": [
+					"AreaCostRando", "3"
+				]
+			},
+			"cases": {
+				"1": "TRINKETS_1",
+				"2": "TRINKETS_2",
+				"3": "TRINKETS_3",
+				"4": "TRINKETS_4",
+			}
+		},
+		"DOOR_4_COUNT": {
+			"type": "SWITCH",
+			"val": {
+				"type": "SLOT_DATA",
+				"keys": [
+					"AreaCostRando", "4"
+				]
+			},
+			"cases": {
+				"1": "TRINKETS_1",
+				"2": "TRINKETS_2",
+				"3": "TRINKETS_3",
+				"4": "TRINKETS_4",
+			}
+		},
 		
 		"TRINKETS_1": {
 			"type": "SWITCH",
@@ -938,6 +1042,225 @@
 		}
 	},
 	"variables": {
-		
+		"Zone1Door": {
+			"value": {
+				"type": "COND",
+				"values": [
+					{
+						"rule": {
+							"type": "VALUE",
+							"left": {
+								"type": "SLOT_DATA",
+								"keys": ["AreaRando","1"]
+							},
+							"op": "==",
+							"right": 1
+						},
+						"val": 1
+					},
+					{
+						"rule": {
+							"type": "VALUE",
+							"left": {
+								"type": "SLOT_DATA",
+								"keys": ["AreaRando","2"]
+							},
+							"op": "==",
+							"right": 1
+						},
+						"val": 2
+					},
+					{
+						"rule": {
+							"type": "VALUE",
+							"left": {
+								"type": "SLOT_DATA",
+								"keys": ["AreaRando","3"]
+							},
+							"op": "==",
+							"right": 1
+						},
+						"val": 3
+					},
+					{
+						"rule": {
+							"type": "VALUE",
+							"left": {
+								"type": "SLOT_DATA",
+								"keys": ["AreaRando","4"]
+							},
+							"op": "==",
+							"right": 1
+						},
+						"val": 4
+					}
+				]
+			}
+		},
+		"Zone2Door": {
+			"value": {
+				"type": "COND",
+				"values": [
+					{
+						"rule": {
+							"type": "VALUE",
+							"left": {
+								"type": "SLOT_DATA",
+								"keys": ["AreaRando","1"]
+							},
+							"op": "==",
+							"right": 2
+						},
+						"val": 1
+					},
+					{
+						"rule": {
+							"type": "VALUE",
+							"left": {
+								"type": "SLOT_DATA",
+								"keys": ["AreaRando","2"]
+							},
+							"op": "==",
+							"right": 2
+						},
+						"val": 2
+					},
+					{
+						"rule": {
+							"type": "VALUE",
+							"left": {
+								"type": "SLOT_DATA",
+								"keys": ["AreaRando","3"]
+							},
+							"op": "==",
+							"right": 2
+						},
+						"val": 3
+					},
+					{
+						"rule": {
+							"type": "VALUE",
+							"left": {
+								"type": "SLOT_DATA",
+								"keys": ["AreaRando","4"]
+							},
+							"op": "==",
+							"right": 2
+						},
+						"val": 4
+					}
+				]
+			}
+		},
+		"Zone3Door": {
+			"value": {
+				"type": "COND",
+				"values": [
+					{
+						"rule": {
+							"type": "VALUE",
+							"left": {
+								"type": "SLOT_DATA",
+								"keys": ["AreaRando","1"]
+							},
+							"op": "==",
+							"right": 3
+						},
+						"val": 1
+					},
+					{
+						"rule": {
+							"type": "VALUE",
+							"left": {
+								"type": "SLOT_DATA",
+								"keys": ["AreaRando","2"]
+							},
+							"op": "==",
+							"right": 3
+						},
+						"val": 2
+					},
+					{
+						"rule": {
+							"type": "VALUE",
+							"left": {
+								"type": "SLOT_DATA",
+								"keys": ["AreaRando","3"]
+							},
+							"op": "==",
+							"right": 3
+						},
+						"val": 3
+					},
+					{
+						"rule": {
+							"type": "VALUE",
+							"left": {
+								"type": "SLOT_DATA",
+								"keys": ["AreaRando","4"]
+							},
+							"op": "==",
+							"right": 3
+						},
+						"val": 4
+					}
+				]
+			}
+		},
+		"Zone4Door": {
+			"value": {
+				"type": "COND",
+				"values": [
+					{
+						"rule": {
+							"type": "VALUE",
+							"left": {
+								"type": "SLOT_DATA",
+								"keys": ["AreaRando","1"]
+							},
+							"op": "==",
+							"right": 4
+						},
+						"val": 1
+					},
+					{
+						"rule": {
+							"type": "VALUE",
+							"left": {
+								"type": "SLOT_DATA",
+								"keys": ["AreaRando","2"]
+							},
+							"op": "==",
+							"right": 4
+						},
+						"val": 2
+					},
+					{
+						"rule": {
+							"type": "VALUE",
+							"left": {
+								"type": "SLOT_DATA",
+								"keys": ["AreaRando","3"]
+							},
+							"op": "==",
+							"right": 4
+						},
+						"val": 3
+					},
+					{
+						"rule": {
+							"type": "VALUE",
+							"left": {
+								"type": "SLOT_DATA",
+								"keys": ["AreaRando","4"]
+							},
+							"op": "==",
+							"right": 4
+						},
+						"val": 4
+					}
+				]
+			}
+		}
 	}
 }
