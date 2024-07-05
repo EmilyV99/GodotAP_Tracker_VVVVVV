@@ -3,6 +3,10 @@
 	"type": "DATA_PACK",
 	"description_bar": "VVVVVV Tracker",
 	"description_ttip": "A tracker for VVVVVV, built for GodotAP clients.",
+	"metadata": {
+		"author": "EmilyV99",
+		"url": "https://github.com/EmilyV99/GodotAP_Tracker_VVVVVV"
+	},
 	"GUI": {
 		"type": "Margin",
 		"top": 0,
