@@ -120,44 +120,7 @@
 										"tooltip": "Extra Trinkets",
 										"modulate_color": "cyan",
 										"value": {
-											"val": {
-												"type": "OP",
-												"op": "+",
-												"vals": [
-													{
-														"type": "ITEMCOUNT",
-														"name": "Trinket 13"
-													},
-													{
-														"type": "ITEMCOUNT",
-														"name": "Trinket 14"
-													},
-													{
-														"type": "ITEMCOUNT",
-														"name": "Trinket 15"
-													},
-													{
-														"type": "ITEMCOUNT",
-														"name": "Trinket 16"
-													},
-													{
-														"type": "ITEMCOUNT",
-														"name": "Trinket 17"
-													},
-													{
-														"type": "ITEMCOUNT",
-														"name": "Trinket 18"
-													},
-													{
-														"type": "ITEMCOUNT",
-														"name": "Trinket 19"
-													},
-													{
-														"type": "ITEMCOUNT",
-														"name": "Trinket 20"
-													}
-												]
-											},
+											"val": "EXCESS_TRINKETS",
 											"gray_under": 0,
 											"max": "TotalExcessTrinkets",
 											"show_max": true
@@ -265,9 +228,14 @@
 				"type": "ANY",
 				"rules": [
 					"ZONE1",
-					"ZONE2",
-					"ZONE3",
-					"ZONE4"
+					{
+						"type": "ALL",
+						"rules": [
+							"ZONE2",
+							"ZONE3",
+							"ZONE4"
+						]
+					}
 				]
 			}
 		},
@@ -454,25 +422,25 @@
 	"named_rules": {
 		"ZONE1": {
 			"type": "VALUE",
-			"left": "DOOR_1_COUNT",
+			"left": "ZONE_1_COUNT",
 			"op": ">=",
 			"right": "PerZoneTrinkets"
 		},
 		"ZONE2": {
 			"type": "VALUE",
-			"left": "DOOR_2_COUNT",
+			"left": "ZONE_2_COUNT",
 			"op": ">=",
 			"right": "PerZoneTrinkets"
 		},
 		"ZONE3": {
 			"type": "VALUE",
-			"left": "DOOR_3_COUNT",
+			"left": "ZONE_3_COUNT",
 			"op": ">=",
 			"right": "PerZoneTrinkets"
 		},
 		"ZONE4": {
 			"type": "VALUE",
-			"left": "DOOR_4_COUNT",
+			"left": "ZONE_4_COUNT",
 			"op": ">=",
 			"right": "PerZoneTrinkets"
 		}
